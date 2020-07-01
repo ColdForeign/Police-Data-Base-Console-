@@ -92,7 +92,7 @@ void Delict::show() const
 {
 	cout << this->title << endl;
 	cout << this->info << endl;
-	cout << "Fine: " << this->title << endl << endl;
+	cout << "Fine: " << this->fine << endl << endl;
 }
 
 void Delict::operator=(const Delict& delict)
