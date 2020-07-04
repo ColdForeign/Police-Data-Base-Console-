@@ -1,7 +1,12 @@
 #pragma once
 #include "Checks.h"
+#include "tcolor.h"
+#include <vector>
+using namespace ConsoleColors;
+
 using std::cout;
 using std::endl;
+using std::vector;
 
 class Delict
 {
@@ -17,8 +22,10 @@ public:
 	string getTitle() const;
 	string getInfo() const;
 	size_t getFine() const;
-	
-	void show() const;
+	void showTitle(ConsoleColor textColor = LightCyan, ConsoleColor borderColor = Purple);
+	void showInfo(ConsoleColor textColor = LightCyan, ConsoleColor borderColor = Purple);
+	void showFine(ConsoleColor textColor = LightCyan, ConsoleColor borderColor = Purple);
+	void show();
 
 	void operator = (const Delict& delict);
 private:
@@ -33,15 +40,21 @@ private:
 
 		MIN_INFO_STR_QUANTITY = 3,
 		MAX_INFO_STR_QUANTITY = 10,
+
+		MAX_STR_LENGHT = 22,
+
 	};
 	void setStandart();
-	size_t getMaxStrLenght();
+	size_t getMaxStrLenght() const;
+	void alignText(vector<string>& tempText, string text, size_t min, size_t max);
+	void ShowLine(const char symbol, size_t size, ConsoleColor color);
+	size_t getThisBoxLenght() const;
+	void ShowSpace(string text);
 
-	void alignText(string text, size_t maxLenght, size_t min);
 	const size_t MAX_FINE = 51000;
 	string title;
 	string info;
 	size_t fine;
-	
-
+	vector<string> titleAlign;
+	vector<string> infoAlign;
 };
