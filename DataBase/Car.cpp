@@ -44,7 +44,12 @@ string Car::getOwnerName() const
 	return this->ownerName;
 }
 
-const list<Delict>& Car::getOffenseList() const
+const list<Delict>& Car::getOffenseListConst() const
+{
+	return this->delicts;
+}
+
+const list<Delict>& Car::getOffenseList()
 {
 	return this->delicts;
 }
@@ -58,7 +63,7 @@ void Car::operator=(const Car& carData)
 {
 	this->ownerName = carData.getOwnerName();
 	this->carNumber = carData.getCarNumber();
-	this->delicts = carData.getOffenseList();
+	this->delicts = carData.getOffenseListConst();
 }
 
 bool Car::operator==(const Car& car) const
@@ -218,10 +223,10 @@ bool Car::defineFilter(string filter, size_t type) const
 	{
 		SetParameters(temp, filter);
 
-		size_t carOrigin = this->carNumber.getRegionPriority() 
+		size_t carOrigin = this->carNumber.getRegionPriority()
 			+ this->carNumber.getSeriesPriority();
 
-		size_t CarTemp = temp.getRegionPriority() 
+		size_t CarTemp = temp.getRegionPriority()
 			+ temp.getSeriesPriority();
 		return defineFilterSide(type, carOrigin, CarTemp);
 	}
@@ -248,19 +253,20 @@ bool Car::defineFilterSide(size_t type, size_t origin, size_t side) const
 		return origin <= side;
 }
 
-ostream& operator<<(ostream& out, const Car& car)
+ostream& operator<<(ostream& out, Car& car)
 {
-	out << "Car owner name: " << car.getOwnerName() << endl;
-	out << "Car number: " << car.getCarNumber() << endl;
+	SetColor(LightCyan);
+	out << "* Car owner name: " << car.getOwnerName() << endl;
+	out << "* Car number: " << car.getCarNumber() << endl;
 
 	cout << endl;
 
-	for (const Delict& item : car.getOffenseList()) 
+	for (Delict item : car.getOffenseList())
 		item.show();
 
 	cout << endl;
-
-	out << "*-------------*\n";
+	SetColor(Blue);
+	cout << "********************\n";
 
 	return out;
 }

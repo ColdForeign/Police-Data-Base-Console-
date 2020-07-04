@@ -3,7 +3,7 @@
 
 namespace ConsoleColors
 {
-	enum ConsoleColor 
+	enum ConsoleColor
 	{
 		Black = 0,
 		Blue,
