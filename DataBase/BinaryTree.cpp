@@ -15,9 +15,9 @@ void Tree::print(Node* car)
 	if (car == nullptr)
 		return;
 
-		print(car->left);
-		cout << car->data << endl;
-		print(car->right);
+	print(car->left);
+	cout << car->data << endl;
+	print(car->right);
 }
 
 void Tree::printByFilter(Node* element, string filter)
@@ -127,7 +127,7 @@ void Tree::insert(const Car& newCar)
 		else
 			current = current->left;
 
-	} 
+	}
 
 	newElement->parent = temp;
 
@@ -149,7 +149,7 @@ void Tree::remove(Node* element)
 			tempCar = element;
 		else
 			tempCar = next(element);
-		
+
 		if (tempCar->left != nullptr)
 			car = tempCar->left;
 		else
@@ -176,7 +176,7 @@ void Tree::deleteAll(Node* car)
 	if (car != nullptr)
 	{
 		Node* tempCar;
-		if (car->left == nullptr || car->right ==nullptr)
+		if (car->left == nullptr || car->right == nullptr)
 			tempCar = car;
 	}
 	else
@@ -190,14 +190,14 @@ Node* Tree::next(Node* car)
 {
 	Node* tempCar = nullptr;
 
-	if (car !=nullptr)
+	if (car != nullptr)
 	{
-		if (car->right !=nullptr)
+		if (car->right != nullptr)
 			return getMin(car->right);
 
 		tempCar = car->parent;
 
-		while (tempCar !=nullptr && car == tempCar->right)
+		while (tempCar != nullptr && car == tempCar->right)
 		{
 			car = tempCar;
 			tempCar = tempCar->parent;
@@ -235,6 +235,3 @@ Tree::~Tree()
 {
 	remove(this->root);
 }
-
-
-

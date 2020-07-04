@@ -21,9 +21,10 @@ public:
 
 	string getCarNumber() const;
 	string getOwnerName() const;
-	const list<Delict>& getOffenseList() const;
+	const list<Delict>& getOffenseListConst() const;
+	const list<Delict>& getOffenseList();
 	const CarNumber& getNumber() const;
-	
+
 	void operator = (const Car& carData);
 	bool operator == (const Car& carData) const;
 	bool operator != (const Car& car) const;
@@ -40,7 +41,7 @@ public:
 	bool operator <= (string filter) const;
 
 	void addOffense();
-	friend ostream& operator << (ostream& out, const Car& car);
+	friend ostream& operator << (ostream& out, Car& car);
 
 private:
 	static void SetParameters(CarNumber& carNumber, string filter);
@@ -51,4 +52,3 @@ private:
 	string ownerName;
 	list<Delict> delicts;
 };
-

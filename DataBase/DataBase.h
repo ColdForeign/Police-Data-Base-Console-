@@ -15,4 +15,3 @@ private:
 	static bool FindCar(Tree& database);
 	static void MultipleFind(Tree& database);
 };
-
